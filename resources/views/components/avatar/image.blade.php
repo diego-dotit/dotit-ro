@@ -4,6 +4,6 @@
     x-cloak
     x-init="$el.addEventListener('error', () => __applyState());
     $el.addEventListener('load', () => __applyState());"
-    {{ $attributes->twMerge('aspect-square h-full w-full') }}
+    {{ $attributes->twMerge('aspect-square') }}
 />
 

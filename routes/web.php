@@ -4,14 +4,11 @@ use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Volt::route('/', 'front.home')->name('home');
 
 Route::redirect('login', 'admin/login');
 
 Route::middleware(['auth'])->get('logout', Logout::class)->name('logout');
-
 
 Route::prefix('admin')
     ->name('admin.')

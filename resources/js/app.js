@@ -1,6 +1,8 @@
 import axios from 'axios';
 import collapse from "@alpinejs/collapse";
 import anchor from "@alpinejs/anchor";
+import { animate, scroll } from "motion"
+// import * as THREE from 'three';
 
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

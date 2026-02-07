@@ -14,6 +14,17 @@ class extends Component {
     <script type="text/javascript" src="{{ asset('js/vanta.dots.js') }}"></script>
 @endpush
 <script>
+const stickyMenu = () => {
+    return {
+        loaded: false,
+        init: function() {
+            setTimeout(() => {
+                this.loaded = true;
+            }, 500);
+        }
+    }
+};
+
 const landing = () => {
     return {
         letterIndex: 0,
@@ -97,24 +108,47 @@ const landing = () => {
 };
 </script>
 
-<div x-data="landing()" class="flex items-center justify-center w-screen h-screen" >
-    <div class="absolute top-0 left-0 z-0 w-full h-full transition-opacity opacity-0 duration-3000 backdrop-blur-md" id="landing"></div>
+<div>
+    <div
+        x-data="stickyMenu()"
+        class="fixed z-50 px-2 py-2 overflow-hidden text-lg transition-all duration-1000 -translate-x-1/2 rounded-full opacity-0 bg-gray-200/70 top-6 left-1/2 backdrop-blur-md w-140 -translate-y-[-200%]"
+        :class="loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-200%]'"
+    >
+        <div class="flex items-center justify-between gap-4" >
+            <img src="{{ asset('images/logo/dotit-normal.webp') }}" alt="" class="h-10 pl-6" />
+            <div class="flex items-center gap-8">
+                <a href="#" class="font-light">Our services</a>
+                <a href="#" class="font-light">What we did</a>
+                <a href="#" class="px-6 py-2 font-light text-white transition-colors duration-300 rounded-full bg-primary hover:bg-green-600">Lets meet</a>
 
-    <div class="z-10">
-        <h1 class="text-[140px] font-bold text-center leading-[100px] mb-20">
-            <div class="relative block opacity-0 transform translate-y-[10px] transition-all duration-1000" x-ref="mainLandingText">
-                <div class="text-primary text-nowrap">enhance</div>
-                <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-emerald-600 top-1/2 left-1/2 text-nowrap">improve</div>
-                <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-rose-600 top-1/2 left-1/2 text-nowrap">boost</div>
             </div>
-            <div>your business</div>
-        </h1>
+        </div>
+    </div>
 
-        <h2 class="text-[30px] font-thin text-center bg-white rounded-full py-2 px-10">we build software that improve your business workflow</h2>
+    <div x-data="landing()" class="relative flex items-center justify-center w-screen h-[calc(100vh-8rem)]" >
+        <div class="absolute top-0 left-0 z-0 w-full h-screen transition-opacity opacity-0 duration-3000 backdrop-blur-md" id="landing"></div>
 
-        <div class="text-center">
-            <a href="#" class="inline-block px-4 py-2 text-white rounded-full bg-primary">call to action</a>
+        <div class="z-10">
+            <h1 class="text-[140px] font-bold text-center leading-[100px] mb-20">
+                <div class="relative block opacity-0 transform translate-y-[10px] transition-all duration-1000" x-ref="mainLandingText">
+                    <div class="text-primary text-nowrap">enhance</div>
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-emerald-600 top-1/2 left-1/2 text-nowrap">improve</div>
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-rose-600 top-1/2 left-1/2 text-nowrap">boost</div>
+                </div>
+                <div>your business</div>
+            </h1>
+
+            <h2 class="text-[30px] font-thin text-center bg-white rounded-full py-2 px-10">we build software that improve your business workflow</h2>
+
+            <div class="text-center">
+                <a href="#" class="inline-block px-4 py-2 text-white rounded-full bg-primary">call to action</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative py-12 -mt-12">
+        <div class="container mx-auto bg-linear-to-br from-primary to-secondary h-196 rounded-4xl snap-start">
+
         </div>
     </div>
 </div>
-
